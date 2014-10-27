@@ -1189,9 +1189,11 @@ void testApp::keyPressed  (int key){
     //Increase showstate
 	if (key == 's') { 
 		showState += 1;
+        cout << showState << endl;
 	}
 	if (key == 'S') { 
 		showState -= 1;
+        cout << showState << endl;
 	}
 	
 	
