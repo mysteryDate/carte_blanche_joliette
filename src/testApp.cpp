@@ -230,6 +230,8 @@ void testApp::setup(){
 	//bgVideoEndRec.loadMovie("videoBg/blue-sparks.mov");
     
     posBgImg = -960;
+    
+    controllerThread.start();
 }
 
 
@@ -251,7 +253,6 @@ void testApp::update(){
             messages.push_back(grt);
 		    messageSent.push_back(0);
             messagePositions.push_back(0);
-			
 	}
 	
 	//Check for new trigger message
@@ -820,6 +821,11 @@ void testApp::drawText(){
 				}
 			}
 		}
+    
+//    if  (messages.size() == 0 and showState != 0 and showState != 1) {
+//        // Ask for a new message if we have none
+//        sendTrigger = true;
+//    }
 	
 	//Ask for a new message
 	if (sendTrigger == true)
@@ -1193,7 +1199,6 @@ void testApp::keyPressed  (int key){
 	
 	
 	//Testing Text Display
-	/*
 	if (key == 'd'){
 	
 		string text = "Ca c'èst un meéssagçe de test";
@@ -1201,8 +1206,8 @@ void testApp::keyPressed  (int key){
          messagePositions.push_back(0);
 		messageSent.push_back(0);
         
-        		
-	}
+         
+    }
 	if (key == 'v') {
 		
 		string text = " a,b, c,d,e,f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z";
@@ -1238,7 +1243,6 @@ void testApp::keyPressed  (int key){
         messagePositions.push_back(0);
 		messageSent.push_back(0);
 	}
-	*/
     
 	if(key == 'p'){
 		vidGrabber.videoSettings();
@@ -1276,23 +1280,7 @@ void testApp::keyPressed  (int key){
      record = 1;
           
 	}
-	
-
-	
-	
-	
 	 
-}
-
-
-//--------------------------------------------------------------
-void testApp::keyReleased(int key){
-	
-}
-
-//--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
-	
 }
 
 //--------------------------------------------------------------
@@ -1329,16 +1317,6 @@ void testApp::mousePressed(int x, int y, int button){
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
-	
-						
-}
-
-//--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
-	
-}
-
 void testApp::exit(){
 	
 	mClient.unbind();

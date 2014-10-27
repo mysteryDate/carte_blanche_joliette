@@ -14,6 +14,22 @@
 #include "ofxNetwork.h"
 #include "ofThread.h"
 
+
+class ControllerThread : public ofThread {
+public:
+    ControllerThread(){}
+    void start() {
+        startThread();
+    }
+    void threadedFunction() {
+        string command = "python "+ofToDataPath("python/of_controller.py")+" "+ofToDataPath("python");
+        system(command.c_str());
+    }
+    void stop() {
+        stopThread();
+    }
+};
+
 class testApp : public ofBaseApp{
 	
 public:
@@ -31,12 +47,8 @@ public:
 	void cvImages();
 	
 	void keyPressed(int key);
-	void keyReleased(int key);
-	void mouseMoved(int x, int y );
 	void mouseDragged(int x, int y, int button);
 	void mousePressed(int x, int y, int button);
-	void mouseReleased(int x, int y, int button);
-	void windowResized(int w, int h);
 	
 	
 	//Syphon
@@ -217,26 +229,10 @@ public:
 	float pan;
 	bool cvImgDisp;
 	
-	
+    ControllerThread controllerThread;
 
 		
 	
-};
-
-
-class ControllerThread : public ofThread {
-public:
-    ControllerThread(){}
-    void start() {
-        startThread();
-    }
-    void threadedFunction() {
-        string command = "python "+ofToDataPath("python/of_controller.py")+" "+ofToDataPath("python");
-        system(command.c_str());
-    }
-    void stop() {
-        stopThread();
-    }
 };
 
 #endif
