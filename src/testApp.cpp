@@ -821,24 +821,19 @@ void testApp::drawText(){
 			}
 		}
 	
-	//Send a 5 to get a new message from the MAX patch
+	//Ask for a new message
 	if (sendTrigger == true)
-		{
-		int sig = 5;
-		char tmp[32];    
-		memset(tmp,0,32);
-		sprintf(tmp, "%i",sig );
-		int sent = triggerOutConnection.Send(tmp, strlen(tmp));
-		cout << sent;
-		cout << sig;
+    {
+		string message_to_controller = "new message";
+		triggerOutConnection.Send(message_to_controller.c_str(), message_to_controller.length());
 		sendTrigger = false;
-		}
+    }
 		 
 	//Draw messages 
 	for(int i = 0; i < messages.size(); i ++)
-		{
+    {
 		shimmer.drawString(messages[i], ofGetWidth() - messagePositions[i], 100);
-		}
+    }
 	
 	//Grab an area of the screen & publish on syphon
 	textTex.loadScreenData(0, 0, 1280, 300);
@@ -1349,9 +1344,9 @@ void testApp::exit(){
 	mClient.unbind();
 	XML.saveFile("mySettings.xml");
 	gui->saveSettings("GUI/guiSettings.xml");
-    delete gui; 
-	
-
+    delete gui;
+    string message_to_controller = "shutdown";
+    triggerOutConnection.Send(message_to_controller.c_str(), message_to_controller.length());
 }
 
 

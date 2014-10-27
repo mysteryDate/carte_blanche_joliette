@@ -12,11 +12,7 @@
 #include "Sequence.h"
 #include "Path.h"
 #include "ofxNetwork.h"
-
-
-
-
-
+#include "ofThread.h"
 
 class testApp : public ofBaseApp{
 	
@@ -225,6 +221,22 @@ public:
 
 		
 	
+};
+
+
+class ControllerThread : public ofThread {
+public:
+    ControllerThread(){}
+    void start() {
+        startThread();
+    }
+    void threadedFunction() {
+        string command = "python "+ofToDataPath("python/of_controller.py")+" "+ofToDataPath("python");
+        system(command.c_str());
+    }
+    void stop() {
+        stopThread();
+    }
 };
 
 #endif
