@@ -791,6 +791,7 @@ void testApp::draw(){
 
 void testApp::drawText(){
     
+    
 		//only advance text when there is a new frame
 		//keeps the text flowing smoothly
      if (playIndex > lastPlayIndex) 
@@ -821,11 +822,6 @@ void testApp::drawText(){
 				}
 			}
 		}
-    
-//    if  (messages.size() == 0 and showState != 0 and showState != 1) {
-//        // Ask for a new message if we have none
-//        sendTrigger = true;
-//    }
 	
 	//Ask for a new message
 	if (sendTrigger == true)
@@ -1190,59 +1186,57 @@ void testApp::keyPressed  (int key){
     //Increase showstate
 	if (key == 's') { 
 		showState += 1;
-        cout << showState << endl;
 	}
 	if (key == 'S') { 
 		showState -= 1;
-        cout << showState << endl;
 	}
 	
 	
-	//Testing Text Display
-	if (key == 'd'){
-	
-		string text = "Ca c'èst un meéssagçe de test";
-         messages.push_back(text);
-         messagePositions.push_back(0);
-		messageSent.push_back(0);
-        
-         
-    }
-	if (key == 'v') {
-		
-		string text = " a,b, c,d,e,f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z";
-		messages.push_back(text);
-        messagePositions.push_back(0);
-		messageSent.push_back(0);
-	}
-	
-	if (key == 'k'){
-		
-		string text = ",, ., :,  , !, @, #, $, %, ?, &, (, ), -, +, ;, 0, 1,2, 3, 4, 5, 6, 7, 8, 9, é, É, è, È, à, À, ç, Ç, ê, Ê, ë , Ë, ù, û, Ù, Û, =, ô, Ô";
-        messages.push_back(text);
-        messagePositions.push_back(0);
-        messageSent.push_back(0);
-		
-	}
-	if (key == 'n') {
-		
-        
-		
-       string text = "Bonjour tout le monde, hôtel, môtel, hôliday inn. À demain. Être en santè. Ça va. ";
-        messages.push_back(text);
-        messagePositions.push_back(0);
-		messageSent.push_back(0);
-        
-    
-    }
-    
-	if (key == 'y') {
-		string text = " Joyeux Noël charmante Joliette! ❤";
-        
-        messages.push_back(text);
-        messagePositions.push_back(0);
-		messageSent.push_back(0);
-	}
+//	//Testing Text Display
+//	if (key == 'd'){
+//	
+//		string text = "Ca c'èst un meéssagçe de test";
+//         messages.push_back(text);
+//         messagePositions.push_back(0);
+//		messageSent.push_back(0);
+//        
+//         
+//    }
+//	if (key == 'v') {
+//		
+//		string text = " a,b, c,d,e,f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z";
+//		messages.push_back(text);
+//        messagePositions.push_back(0);
+//		messageSent.push_back(0);
+//	}
+//	
+//	if (key == 'k'){
+//		
+//		string text = ",, ., :,  , !, @, #, $, %, ?, &, (, ), -, +, ;, 0, 1,2, 3, 4, 5, 6, 7, 8, 9, é, É, è, È, à, À, ç, Ç, ê, Ê, ë , Ë, ù, û, Ù, Û, =, ô, Ô";
+//        messages.push_back(text);
+//        messagePositions.push_back(0);
+//        messageSent.push_back(0);
+//		
+//	}
+//	if (key == 'n') {
+//		
+//        
+//		
+//       string text = "Bonjour tout le monde, hôtel, môtel, hôliday inn. À demain. Être en santè. Ça va. ";
+//        messages.push_back(text);
+//        messagePositions.push_back(0);
+//		messageSent.push_back(0);
+//        
+//    
+//    }
+//    
+//	if (key == 'y') {
+//		string text = " Joyeux Noël charmante Joliette! ❤";
+//        
+//        messages.push_back(text);
+//        messagePositions.push_back(0);
+//		messageSent.push_back(0);
+//	}
     
 	if(key == 'p'){
 		vidGrabber.videoSettings();
